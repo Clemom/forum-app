@@ -8,7 +8,7 @@ export default function Profile() {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (!token) {
-      setError("❌ Non connecté.")
+      setError("Non connecté.")
       return
     }
 
@@ -22,7 +22,7 @@ export default function Profile() {
         return res.json()
       })
       .then(setUser)
-      .catch(() => setError("❌ Session invalide ou expirée."))
+      .catch(() => setError("Session invalide ou expirée."))
   }, [])
 
   if (error) {
@@ -55,7 +55,6 @@ export default function Profile() {
             <CardTitle className="text-2xl font-bold">Mon profil</CardTitle>
         </CardHeader>
         <CardContent>
-            <p><strong>ID :</strong> {user.id}</p>
             <p><strong>Nom :</strong> {user.username}</p>
             <p><strong>Email :</strong> {user.email}</p>
             <p><strong>Créé le :</strong> {new Date(user.createdAt).toLocaleDateString()}</p>
